@@ -23,17 +23,16 @@ RUN set -ex \
 
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 443
-ENV PASSWORD=
+ENV LOCAL_PORT  1080
+ENV PASSWORD    12345678
 ENV METHOD      aes-256-cfb
 ENV TIMEOUT     300
-ENV DNS_ADDR    8.8.8.8
 
-EXPOSE $SERVER_PORT
+EXPOSE $LOCAL_PORT
 
 CMD ss-local  -s $SERVER_ADDR \
               -p $SERVER_PORT \
-              -k ${PASSWORD:-$(hostname)} \
+              -l $LOCAL_PORT \
+              -k $PASSWORD \
               -m $METHOD \
-              -t $TIMEOUT \
-              -d $DNS_ADDR \
-              
+              -t $TIMEOUT

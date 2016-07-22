@@ -25,8 +25,6 @@ RUN echo "forward-socks5 / 127.0.0.1:1080 ." >> /etc/privoxy/config
 
 VOLUME /etc/privoxy
 
-RUN gosu privoxy privoxy --no-daemon /etc/privoxy/config
-
 RUN set -ex \
     && apk add --no-cache $SS_DEP \
     && curl -sSL $SS_URL | tar xz \
@@ -53,3 +51,4 @@ CMD ss-local  -s $SERVER_ADDR \
               -m $METHOD \
               -t $TIMEOUT
              
+CMD gosu privoxy privoxy --no-daemon /etc/privoxy/config

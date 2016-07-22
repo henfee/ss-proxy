@@ -1,2 +1,2 @@
 # ss-proxy
-shadowsocks client
+work in progress

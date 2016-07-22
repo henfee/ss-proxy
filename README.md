@@ -1,2 +1,2 @@
 # ss-proxy
-shadowsocks client + privoxy
+shadowsocks client
